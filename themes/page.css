@@ -1,0 +1,60 @@
+body {
+	font-size: small;
+	background: gray;
+	background-attachment: fixed;
+	margin: 0;
+	font-family: Georgia, Times, serif;
+}
+p, li {
+	margin: 0 0 0.2em 0;
+	line-height: 1.25;
+}
+.page {
+	/* padding is still relevant in print (marginalia would disappear) */
+	padding: 3em 7em 8em 7em;
+	background-color: white;
+}
+.prepage {
+	padding: 0.8em 1.5em;
+	background-color: white;
+}
+.postpage .attribution {
+	font-size: 0.75em;
+	background-color: white;
+	float: right;
+	padding: 1em 1.5em;
+	text-align: right;
+}
+.postpage * {
+	color: black;
+}
+@media screen {
+	.page {
+		max-width: 50em;
+		margin: 2em auto 6em;
+	}
+	.prepage {
+		max-width: 61em;
+		margin: 0 auto 2em;
+	}
+	.page,
+	.prepage {
+		-moz-box-shadow: 0 0.2em 0.6em 0.2em rgba(0, 0, 0, 0.5);
+		-webkit-box-shadow: 0 0.2em 0.6em 0.2em rgba(0, 0, 0, 0.5);
+		box-shadow: 0 0.2em 0.6em 0.2em rgba(0, 0, 0, 0.5);
+	}
+	.postpage {
+		max-width: 60em;
+		margin: -4em auto 14em;
+	}
+	.postpage .attribution {
+		-moz-box-shadow: 0 0.2em 0.6em 0.2em rgba(0, 0, 0, 0.5);
+		-webkit-box-shadow: 0 0.2em 0.6em 0.2em rgba(0, 0, 0, 0.5);
+		box-shadow: 0 0.2em 0.6em 0.2em rgba(0, 0, 0, 0.5);
+	}
+}
+@media print {
+	.prepage {
+		display: none;
+	}
+}
