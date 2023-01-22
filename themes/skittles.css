@@ -8,6 +8,8 @@ body {
 	font-size: 100%;
 	line-height: 1.125em;
 	color: #333;
+	/* system: serif */
+	font-family: Iowan Old Style, Apple Garamond, Baskerville, Times New Roman, Droid Serif, Times, Source Serif Pro, serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
 }
 
 fieldset {
@@ -15,7 +17,6 @@ fieldset {
 }
 
 .center {
-	font-family: Georgia, Times, serif;
 	background-color: #FFF;
 }
 
@@ -35,9 +36,6 @@ pre {
 tt a,
 pre a {
 	text-decoration: none;
-}
-
-nav {
 }
 
 h1 {
@@ -122,63 +120,14 @@ table {
 	font-weight: bold;
 }
 
-a.out {
-	background-image: url(../images/shortcut-tiny.png);
-	background-repeat: no-repeat;
-	background-position: center right;
-	padding-right: 11px;
-}
-
 #copyline {
-	border: 1px solid #999;
-	margin: 0 -1px -1px -1px;
+	border-top: 1px solid #999;
 	text-align: center;
 	font-size: 0.65em;
 	padding: 0 0.2em;
 	background-color: #F8F8F8;
 	clear: both;
 	text-transform: lowercase;
-}
-
-#leftcol {
-	padding-bottom: 1em;
-}
-
-#leftcol.twocol {
-	float: left;
-	width: 550px;
-	border-right: 1px solid #999;
-	margin-right: -1px;
-}
-
-#rightcol.twocol {
-	float: right;
-	width: 199px;
-	border-left: 1px solid #999;
-}
-
-/* things - editor */
-#editme,
-#deleteme {
-	float: right;
-}
-
-#leftcol.twocol textarea {
-	width: 535px;
-}
-
-textarea {
-	width: 735px;
-	height: 240px;
-	margin: 0.1em 0.5em;
-}
-
-form {
-	margin-top: 1em;
-}
-
-input {
-	margin: 0.1em 0 0.1em 0.5em;
 }
 
 /* cycled */
@@ -203,64 +152,5 @@ a:hover {
 	text-decoration: underline;
 }
 
-/* dark */
-body.dark #headbar > img {
-	/*display: none;*/
-}
-
-body.dark {
-	background: #000 url(../images/nac_vfd_os.png) no-repeat right top;
-}
-
-body.dark h2:first-child {
-	margin-top: -1px;
-}
-
-body.dark .center {
-	margin: 130px auto 2em;
-	background-color: #000;
-	color: #a8f0ef;
-	font-family: Verdana, Tahoma, Arial, Helvetica, sans-serif;
-}
-
-body.dark p,
-body.dark li,
-body.dark td {
-	font-size: small;
-}
-
-body.dark h2 a {
-	text-decoration: none;
-}
-
-body.dark h2,
-body.dark #copyline,
-body.dark tr.row1 {
-	background-color: #010a09;
-}
-
-body.dark .center,
-body.dark h2,
-body.dark #copyline,
-body.dark #leftcol,
-body.dark #rightcol {
-	border-color: #102724;
-}
-
-body.dark tr:first-child .nick {
-	background-image: none;
-}
-
-body.dark a,
-body.dark a:hover {
-	color: #ffff99;
-}
-
-body.dark a:visited {
-	color: #e6dd70;
-}
-
-body.dark a.out {
-	background-image: none;
-	padding-right: 0
+nav {
 }

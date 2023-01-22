@@ -11,6 +11,11 @@
 		.recipe {
 			margin: 1em 1em 2em;
 		}
+		.recipe::after {
+			content: "";
+			clear: both;
+			display: table;
+		}
 
 		.instructions {
 			border: 1px solid #999;
@@ -55,12 +60,6 @@
 			text-transform: uppercase;
 		}
 
-		.instructions .amount {
-			font-size: 0.8em;
-			font-weight: bold;
-			text-align: right;
-		}
-
 		.instructions p {
 			font-size: 0.85em;
 			padding: 0;
@@ -92,7 +91,7 @@
 		<div class="recipe">
 			<div class="instructions">
 				<h3>Buttermilk Waffles</h3>
-				<p class="amount">6 Waffles</p>
+				<p>6 Waffles</p>
 				<p>Sift before measuring:</p>
 				<ul>
 					<li>2 cups all-purpose flour</li>
@@ -119,7 +118,7 @@
 				</ul>
 				<p>Fold them into the batter. To cook, see About Waffles, 240.</p>
 			</div>
-			<p class="notes">1&frac12; times the recipe is about right for two, with lots of toppings.</p>
+			<p class="notes">1&frac12; times the recipe is about right for two... if one of you is a hungry teenager.</p>
 			<p class="notes">I don't know what these would be like in a Belgian waffle iron.</p>
 			<p class="attrib">Joy of Cooking (ISBN 0-02-604570-2)</p>
 		</div>
@@ -247,8 +246,35 @@
 			<p class="notes">It'll take longer than 10 minutes to thicken, but only really sets when cooled.</p>
 			<p class="attrib"><a href="https://www.foodnetwork.com/recipes/ina-garten/lemon-curd-recipe-1941910">https://www.foodnetwork.com/recipes/ina-garten/lemon-curd-recipe-1941910</a></p>
 		</div>
+
+		<div class="recipe">
+			<div class="instructions">
+				<h3>Oatmeal Cookies</h3>
+				<p>Mix:</p>
+				<ul>
+					<li>1&frac12; cups flour</li>
+					<li>1 tsp soda</li>
+					<li>1 tsp salt</li>
+					<li>1 tsp cinnamon</li>
+					<li>1 tsp nutmeg</li>
+				</ul>
+				<p>Beat:</p>
+				<ul>
+					<li>1 cup shortening</li>
+					<li>&frac12; cup sugar</li>
+					<li>1 cup brown sugar</li>
+					<li>2 large eggs</li>
+					<li>1 tsp vanilla</li>
+				</ul>
+				<p>Combine wet and dry, then stir in:</p>
+				<ul>
+					<li>3 cups quick oats</li>
+					<li>&frac34; cup raisins</li>
+				</ul>
+				<p>Bake at 375&deg; for 8 minutes.</p>
+			</div>
+		</div>
 	</div>
-	<div id="rightcol"></div>
 	<p id="copyline">Copyright &copy; 2020 Neil Gentleman</p>
 </div>
 </body>
