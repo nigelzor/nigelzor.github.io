@@ -16,13 +16,15 @@ fieldset {
 
 .center {
 	font-family: Georgia, Times, serif;
-	border: 1px solid #999;
-	width: 750px;
-	margin: 2em auto;
 	background-color: #FFF;
-	-moz-border-radius: 7px;
-	-webkit-border-radius: 7px;
-	border-radius: 7px;
+}
+
+@media screen and (min-width: 750px) {
+	.center {
+		border: 1px solid #999;
+		max-width: 750px;
+		margin: 2em auto;
+	}
 }
 
 tt,
@@ -35,18 +37,15 @@ pre a {
 	text-decoration: none;
 }
 
+nav {
+}
+
 h1 {
 	margin: -1px;
 	border: 1px solid #999;
 	padding: 0.2em 0 0 0.2em;
 	font-size: 2em;
 	line-height: 1.5em;
-	-moz-border-radius-topleft: 7px;
-	-webkit-border-top-left-radius: 7px;
-	border-top-left-radius: 7px;
-	-moz-border-radius-topright: 7px;
-	-webkit-border-top-right-radius: 7px;
-	border-top-right-radius: 7px;
 }
 
 h2 {
@@ -72,17 +71,20 @@ p {
 	padding: 0.1em 0.5em;
 }
 
+#headbar {
+	display: flex;
+	align-items: end;
+	justify-content: space-between;
+}
+
 #headbar > img {
 	max-width: 60px;
+	margin: 0.2rem;
 }
 
 #subhead {
-	float: right;
-	margin: -1.6em 0.3em 0;
 	font-size: 0.75em;
-	/* if width < 200px, pushes down scores but not main col. (IE7) */
-	width: 550px;
-	text-align: right;
+	margin: 0 0.2rem;
 }
 
 img {
@@ -106,19 +108,6 @@ table {
 	border-spacing: 0;
 	border-collapse: collapse;
 	margin: -0.3em 0 0.1em;
-}
-
-/* tr:first-child .nick {
-	background-image: url(../images/fugue/crown.png);
-	background-repeat: no-repeat;
-	background-position: center left;
-	padding-left: 16px;
-} */
-
-tr:first-child .nick {
-	background-image: url(../images/fugue/trophy.png);
-	background-repeat: no-repeat;
-	background-position: center right;
 }
 
 .points {
@@ -148,12 +137,6 @@ a.out {
 	padding: 0 0.2em;
 	background-color: #F8F8F8;
 	clear: both;
-	-moz-border-radius-bottomleft: 7px;
-	-webkit-border-bottom-left-radius: 7px;
-	border-bottom-left-radius: 7px;
-	-moz-border-radius-bottomright: 7px;
-	-webkit-border-bottom-right-radius: 7px;
-	border-bottom-right-radius: 7px;
 	text-transform: lowercase;
 }
 
@@ -221,13 +204,8 @@ a:hover {
 }
 
 /* dark */
-body.dark #headbar {
-	display: none;
-}
-
-body.dark #subhead {
-	float: left;
-	text-align: left;
+body.dark #headbar > img {
+	/*display: none;*/
 }
 
 body.dark {
@@ -236,24 +214,6 @@ body.dark {
 
 body.dark h2:first-child {
 	margin-top: -1px;
-	-moz-border-radius-topleft: 7px;
-	-moz-border-radius-topright: 7px;
-	-webkit-border-top-left-radius: 7px;
-	-webkit-border-top-right-radius: 7px;
-	border-top-left-radius: 7px;
-	border-top-right-radius: 7px;
-}
-
-body.dark #leftcol.twocol h2:first-child {
-	-moz-border-radius-topright: 0;
-	-webkit-border-top-right-radius: 0;
-	border-top-right-radius: 0;
-}
-
-body.dark #rightcol.twocol h2:first-child {
-	-moz-border-radius-topleft: 0;
-	-webkit-border-top-left-radius: 0;
-	border-top-left-radius: 0;
 }
 
 body.dark .center {

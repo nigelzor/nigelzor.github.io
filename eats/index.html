@@ -1,14 +1,13 @@
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.1//EN" "http://www.w3.org/TR/xhtml11/DTD/xhtml11.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml">
+<!DOCTYPE html>
+<html lang="en">
 <head>
-	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1" />
+	<meta charset="utf-8" />
 	<title>7 // Eats</title>
 	<link rel="icon" type="image/x-icon" href="../favicon.ico" />
 	<link rel="stylesheet" type="text/css" href="../themes/skittles.css"/>
 	<script type="text/javascript" src="../themes/skittles.js"></script>
-	<script type="text/javascript" src="../themes/recaptcha.js"></script>
-	<style type="text/css">
-		/* <![CDATA[ */
+	<style>
 		.recipe {
 			margin: 1em 1em 2em;
 		}
@@ -18,20 +17,30 @@
 			margin: 0;
 			padding: 0.3em;
 			background-color: #F8F8F8;
-			float: left;
-			clear: left;
-			width: 55%;
+		}
+
+		@media screen and (min-width: 750px) {
+			.instructions {
+				float: left;
+				clear: left;
+				width: 55%;
+			}
+
+			/* only shift the first one down */
+			.recipe > .instructions + .notes {
+				margin: 3em 0 0;
+			}
+
+			.notes {
+				width: 40%;
+				float: left;
+				clear: right;
+			}
 		}
 
 		/* only shift the first one down */
 		.recipe > .instructions + .notes {
-			margin: 3em 0 0;
-		}
-
-		.notes {
-			float: left;
-			clear: right;
-			width: 40%;
+			margin: 0.5em 0 0;
 		}
 
 		.attrib {
@@ -69,13 +78,14 @@
 			margin: 0.2em 0;
 			padding: 0;
 		}
-		/* ]]> */
 	</style>
 </head>
 <body>
 <div class="center">
-	<h1 id="headbar"><img src="../images/se7en-extract1-120.png" /></h1>
-	<span id="subhead"><a href="../">nigelzor.github.io</a> :: <a href="../eats/">Eats</a></span>
+	<nav id="headbar">
+		<img src="../images/se7en-extract1-120.png" alt="" />
+		<span id="subhead"><a href="../">nigelzor.github.io</a> :: <a href="../eats/">Eats</a></span>
+	</nav>
 	<div id="leftcol">
 		<h2>Many Things are Delicious</h2>
 
@@ -239,7 +249,7 @@
 		</div>
 	</div>
 	<div id="rightcol"></div>
-	<p id="copyline">Copyright &copy; 2020 <a href="http://mailhide.recaptcha.net/d?k=01zIdjIjP6YNBn3Ed9WzJkag==&amp;c=rhlAob4j37hMiPxIS5FEHxaAPGbD8B0-qkAuhcnG14s=">Neil Gentleman</a></p>
+	<p id="copyline">Copyright &copy; 2020 Neil Gentleman</p>
 </div>
 </body>
 </html>

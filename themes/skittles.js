@@ -14,6 +14,7 @@
 			// duplication because IE splits the selector
 			"a": fg(0.7, 0.55), "a:hover": fg(0.7, 0.55),
 			"h1": bg(0.7, 0.5),
+			"nav": bg(0.7, 0.5),
 			"#subhead": fg(0.5, 0.75),
 			"#subhead a": fg(0.5, 0.85)
 		};
@@ -31,7 +32,7 @@
 			}
 		}
 
-		var hue = Math.random() * 360;
+		var hue = Math.floor(Math.random() * 360);
 		var colorTick = function () {
 			for (var i = 0; i < crules.length; i++) {
 				var mapping = crules[i][1];
@@ -52,6 +53,15 @@
 		}
 	};
 
+	function hslString(h, s, l) {
+		if (arguments.length === 1) {
+			l = arguments[0][2];
+			s = arguments[0][1];
+			h = arguments[0][0];
+		}
+		return `hsl(${h}, ${s * 100}%, ${l * 100}%)`;
+	}
+
 	function hexString(red, green, blue) {
 		if (arguments.length === 1) {
 			green = arguments[0][2];
@@ -66,6 +76,14 @@
 			return "" + hexStr.charAt(high) + hexStr.charAt(low);
 		}
 		return "#" + decToHex(red) + decToHex(green) + decToHex(blue);
+	}
+
+	function HSVtoHSL(hue, sat, val) {
+		var l = val * (1 - sat / 2);
+		var s = (l === 0 || l === 1)
+			? 0
+			: (val - l) / Math.min(l, 1 - l);
+		return [hue, s, l];
 	}
 
 	function HSVtoRGB(hue, sat, val) {
