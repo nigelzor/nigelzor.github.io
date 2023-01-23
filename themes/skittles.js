@@ -1,120 +1,60 @@
 /* taste the rainbow */
 (function () {
-	var oldonload = window.onload;
-
-	window.onload = function () {
-		if (oldonload) oldonload();
-
-		var fg = function (sat, val) { return { layer: "fg", sat: sat, val: val }; };
-		var bg = function (sat, val) { return { layer: "bg", sat: sat, val: val }; };
-
-		// TODO: don't require these to be in the CSS -- add them dynamically
-		var stylemapping = {
-			"a:visited": fg(0.5, 0.3),
-			// duplication because IE splits the selector
-			"a": fg(0.7, 0.55), "a:hover": fg(0.7, 0.55),
-			"h1": bg(0.7, 0.5),
-			"nav": bg(0.7, 0.5),
-			"#subhead": fg(0.5, 0.75),
-			"#subhead a": fg(0.5, 0.85)
-		};
-
-		// [css-rule, mapping]
-		var crules = [];
-		var ruleset = document.styleSheets[0].cssRules || document.styleSheets[0].rules;
-		for (var i = 0; i < ruleset.length; i++) {
-			var st = ruleset[i];
-			if (st.selectorText) {
-				var mapping = stylemapping[st.selectorText.toLowerCase()];
-				if (mapping !== undefined) {
-					crules.push([st, mapping]);
-				}
-			}
+	var sheet;
+	function addCSS(rule) {
+		if (!sheet) {
+			var style = document.createElement('style');
+			document.head.appendChild(style);
+			sheet = style.sheet;
 		}
+		sheet.insertRule(rule, sheet.cssRules.length);
+	}
 
-		var hue = Math.floor(Math.random() * 360);
-		var colorTick = function () {
-			for (var i = 0; i < crules.length; i++) {
-				var mapping = crules[i][1];
-				var color = hexString(HSVtoRGB(hue, mapping.sat, mapping.val));
-				if (mapping.layer === "fg") {
-					crules[i][0].style.color = color;
-				} else if (mapping.layer === "bg") {
-					crules[i][0].style.backgroundColor = color;
-				}
-			}
-			hue = (hue + 1) % 360;
-			window.setTimeout(colorTick, 300);
-		};
-
+	window.addEventListener('DOMContentLoaded', function () {
 		// don't cycle the colours for "dark" theme
-		if (!(/\bdark\b/.test(document.body.className))) {
-			colorTick();
-		}
-	};
-
-	function hslString(h, s, l) {
-		if (arguments.length === 1) {
-			l = arguments[0][2];
-			s = arguments[0][1];
-			h = arguments[0][0];
-		}
-		return `hsl(${h}, ${s * 100}%, ${l * 100}%)`;
-	}
-
-	function hexString(red, green, blue) {
-		if (arguments.length === 1) {
-			green = arguments[0][2];
-			blue = arguments[0][1];
-			red = arguments[0][0];
+		if (/\bdark\b/.test(document.body.className)) {
+			return;
 		}
 
-		function decToHex(dec) {
-			var hexStr = "0123456789ABCDEF";
-			var low = dec % 16;
-			var high = (dec - low)/16;
-			return "" + hexStr.charAt(high) + hexStr.charAt(low);
-		}
-		return "#" + decToHex(red) + decToHex(green) + decToHex(blue);
-	}
+		var steps = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
+		var offset = Math.floor(Math.random() * steps.length);
+		// to re-generate the wheels, add <script src="https://unpkg.com/culori"></script>
+		//
+		// function oklchWheel(l, c) {
+		// 	return steps.map((step) => culori.formatHex({mode: 'oklch', l, c, h: step * 36}));
+		// }
+		// var palette = {
+		// 	dim: oklchWheel(0.3, 0.05),
+		// 	default: oklchWheel(0.4, 0.1),
+		// 	bright: oklchWheel(0.8, 0.1),
+		// }
+		var palette = {
+			dim: ["#42232d","#43241c","#3d290e","#30300f","#1d341d","#07362f","#05343e","#1a2f46","#2d2a45","#3a253c"],
+			default: ["#712d45","#74301e","#683c00","#4e4b00","#1f5521","#00584a","#00536a","#17497b","#463d7a","#613266"],
+			bright: ["#f3a3bb","#f7a791","#e6b374","#c4c375","#96cf95","#6dd3c0","#69cee7","#8ec2fd","#bab4fb","#dea8e2"]
+		};
 
-	function HSVtoHSL(hue, sat, val) {
-		var l = val * (1 - sat / 2);
-		var s = (l === 0 || l === 1)
-			? 0
-			: (val - l) / Math.min(l, 1 - l);
-		return [hue, s, l];
-	}
+		var rules = {
+			"a:visited": { color: palette.dim },
+			"a, a:hover": { color: palette.default },
+			"nav": { color: palette.bright, 'background-color': palette.default },
+			"nav a, nav a:hover": { color: palette.bright },
+		};
 
-	function HSVtoRGB(hue, sat, val) {
-		if (arguments.length === 1) {
-			val = arguments[0][2];
-			sat = arguments[0][1];
-			hue = arguments[0][0];
-		}
-
-		function floatTo255(r, g, b) {
-			return [Math.round(r * 255), Math.round(g * 255), Math.round(b * 255)];
-		}
-
-		if (sat === 0) {
-			return floatTo255(val, val, val);
-		}
-
-		var h = hue / 60;
-		var i = Math.floor(h);
-		var f = h - i;
-		var p = val * (1 - sat);
-		var q = val * (1 - sat * f);
-		var t = val * (1 - sat * (1 - f));
-
-		switch (i) {
-			case 0: return floatTo255(val, t, p);
-			case 1: return floatTo255(q, val, p);
-			case 2: return floatTo255(p, val, t);
-			case 3: return floatTo255(p, q, val);
-			case 4: return floatTo255(t, p, val);
-			case 5: return floatTo255(val, p, q);
-		}
-	}
+		Object.entries(rules).forEach(([selector, config], i) => {
+			var name = 'generated_keyframes_' + i;
+			addCSS(`
+			@keyframes ${name} {
+				${steps.map((x) => `
+				${x === 0 ? '0%, 10' : x}0% {
+					${config.color ? `color: ${config.color[(x + offset) % steps.length]};` : ''}
+					${config['background-color'] ? `background-color: ${config['background-color'][(x + offset) % steps.length]};` : ''}
+				}`).join('')}
+			}`);
+			addCSS(`
+			${selector} {
+				animation: 100s linear infinite ${name}; 
+			}`);
+		});
+	});
 })();

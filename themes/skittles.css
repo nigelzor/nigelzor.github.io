@@ -7,7 +7,7 @@ body {
 	background-color: #E3E3E3;
 	font-size: 100%;
 	line-height: 1.125em;
-	color: #333;
+	color: #222;
 	/* system: serif */
 	font-family: Iowan Old Style, Apple Garamond, Baskerville, Times New Roman, Droid Serif, Times, Source Serif Pro, serif, Apple Color Emoji, Segoe UI Emoji, Segoe UI Symbol;
 }
@@ -57,7 +57,7 @@ h2 {
 }
 
 h2:first-child {
-	margin-top: 0;
+	margin-top: -1px;
 }
 
 li {
@@ -69,18 +69,29 @@ p {
 	padding: 0.1em 0.5em;
 }
 
-#headbar {
+nav {
 	display: flex;
 	align-items: end;
-	justify-content: space-between;
+	border-top: 1px solid #999;
+	border-bottom: 1px solid #999;
 }
 
-#headbar > img {
+nav:first-child, nav + h2 {
+	border-top: none;
+}
+
+nav:last-child {
+	border-bottom: none;
+}
+
+nav > img {
 	max-width: 60px;
 	margin: 0.2rem;
 }
 
-#subhead {
+nav > span {
+	flex-grow: 1;
+	text-align: right;
 	font-size: 0.75em;
 	margin: 0 0.2rem;
 }
@@ -116,20 +127,6 @@ table {
 	background-color: #F8F8F8;
 }
 
-.online {
-	font-weight: bold;
-}
-
-#copyline {
-	border-top: 1px solid #999;
-	text-align: center;
-	font-size: 0.65em;
-	padding: 0 0.2em;
-	background-color: #F8F8F8;
-	clear: both;
-	text-transform: lowercase;
-}
-
 /* cycled */
 a {
 	color: #33A;
@@ -143,14 +140,10 @@ a:hover {
 	color: #33A;
 }
 
-#subhead a {
-	color: inherit;
+nav a {
 	text-decoration: none;
 }
 
-#subhead a:hover {
+nav a:hover {
 	text-decoration: underline;
-}
-
-nav {
 }
