@@ -17,7 +17,7 @@
 		}
 
 		var steps = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
-		var offset = Math.floor(Math.random() * steps.length);
+		var offset = Math.floor(Math.random() * 100);
 		// to re-generate the wheels, add <script src="https://unpkg.com/culori"></script>
 		//
 		// function oklchWheel(l, c) {
@@ -47,13 +47,13 @@
 			@keyframes ${name} {
 				${steps.map((x) => `
 				${x === 0 ? '0%, 10' : x}0% {
-					${config.color ? `color: ${config.color[(x + offset) % steps.length]};` : ''}
-					${config['background-color'] ? `background-color: ${config['background-color'][(x + offset) % steps.length]};` : ''}
+					${config.color ? `color: ${config.color[x]};` : ''}
+					${config['background-color'] ? `background-color: ${config['background-color'][x]};` : ''}
 				}`).join('')}
 			}`);
 			addCSS(`
 			${selector} {
-				animation: 100s linear infinite ${name}; 
+				animation: 100s linear -${offset}s infinite ${name}; 
 			}`);
 		});
 	});
