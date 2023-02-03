@@ -22,9 +22,11 @@ fieldset {
 
 @media screen and (min-width: 750px) {
 	.center {
-		border: 1px solid #999;
 		max-width: 750px;
 		margin: 2em auto;
+	}
+	.center > div {
+		border: 1px solid #999;
 	}
 }
 
@@ -39,8 +41,8 @@ pre a {
 }
 
 h1 {
-	margin: -1px;
-	border: 1px solid #999;
+	border-top: 1px solid #999;
+	border-bottom: 1px solid #999;
 	padding: 0.2em 0 0 0.2em;
 	font-size: 2em;
 	line-height: 1.5em;
@@ -72,16 +74,6 @@ p {
 nav {
 	display: flex;
 	align-items: end;
-	border-top: 1px solid #999;
-	border-bottom: 1px solid #999;
-}
-
-nav:first-child, nav + h2 {
-	border-top: none;
-}
-
-nav:last-child {
-	border-bottom: none;
 }
 
 nav > img {
@@ -93,7 +85,7 @@ nav > span {
 	flex-grow: 1;
 	text-align: right;
 	font-size: 0.75em;
-	margin: 0 0.2rem;
+	margin: 0.1rem 0.2rem;
 }
 
 img {
